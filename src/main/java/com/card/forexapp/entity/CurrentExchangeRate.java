@@ -3,11 +3,14 @@ package com.card.forexapp.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class CurrentExchangeRate {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String quoteCurrency;
@@ -94,5 +97,14 @@ public class CurrentExchangeRate {
 	public void setExchangeRate(Double exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
+
+	@Override
+	public String toString() {
+		return "CurrentExchangeRate [id=" + id + ", quoteCurrency=" + quoteCurrency + ", quoteCountry=" + quoteCountry
+				+ ", baseCurrency=" + baseCurrency + ", baseCountry=" + baseCountry + ", time=" + time
+				+ ", exchangeRate=" + exchangeRate + "]";
+	}
+	
+	
 }
 

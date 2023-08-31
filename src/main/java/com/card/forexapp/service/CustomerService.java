@@ -21,4 +21,9 @@ public class CustomerService {
 		return customerRepository.findAll();
 	}
 
+	public Integer countCustomers() {
+		// TODO Auto-generated method stub
+		return (int) this.customerRepository.count();
+	}
+
 }

@@ -17,7 +17,7 @@ public class ForexCardController {
 	@Autowired
 	ForexCardService forexCardService;
 	
-	@GetMapping("/controller")
+	@GetMapping("/forexcard")
 	public  List<ForexCard> getAllTranscation() {
 		return this.forexCardService.getAllTranscation();
 	}

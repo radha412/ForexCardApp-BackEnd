@@ -17,7 +17,6 @@ public class LoadingTranscationService {
 	LoadingTranscationRepository loadingTranscationRepository;
 
 	public List<LoadingTranscation> getAllPayments()  {
-		// TODO Auto-generated method stub
 		return this.loadingTranscationRepository.findAll();
 	}
 

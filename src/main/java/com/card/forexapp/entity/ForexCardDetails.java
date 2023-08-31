@@ -1,15 +1,18 @@
 package com.card.forexapp.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class ForexCardDetails {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer forexCardNameId ;	
 	private String forexCardName;
-	private String forexCardConversionFee;
+	private Double forexCardConversionFee;
 	private Double maxSpendingLimit;
 	private Double platformfee;
 	private Double subscriptionFees;
@@ -21,7 +24,7 @@ public class ForexCardDetails {
 	}
 	
 	
-	public ForexCardDetails(Integer forexCardNameId, String forexCardName, String forexCardConversionFee,
+	public ForexCardDetails(Integer forexCardNameId, String forexCardName, Double forexCardConversionFee,
 			Double maxSpendingLimit, Double platformfee, Double subscriptionFees, Double baseIncome) {
 		super();
 		this.forexCardNameId = forexCardNameId;
@@ -46,12 +49,17 @@ public class ForexCardDetails {
 	public void setForexCardName(String forexCardName) {
 		this.forexCardName = forexCardName;
 	}
-	public String getForexCardConversionFee() {
+	
+	public Double getForexCardConversionFee() {
 		return forexCardConversionFee;
 	}
-	public void setForexCardConversionFee(String forexCardConversionFee) {
+
+
+	public void setForexCardConversionFee(Double forexCardConversionFee) {
 		this.forexCardConversionFee = forexCardConversionFee;
 	}
+
+
 	public Double getMaxSpendingLimit() {
 		return maxSpendingLimit;
 	}

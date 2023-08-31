@@ -17,7 +17,6 @@ public class ForexCardService {
 	ForexCardRepository forexCardRepo;
 
 	public  List<ForexCard> getAllTranscation() {
-		// TODO Auto-generated method stub
 		return this.forexCardRepo.findAll();
 		
 	}

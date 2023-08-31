@@ -16,21 +16,28 @@ public class Admin {
 	
 	private String adminEmail;
 	private String Password;
-	
+	private Boolean isAdmin;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ForexCardDetails> forexCardDetails = new ArrayList<>();
 	public Admin() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Admin(Integer adminId, String adminEmail, String password,
-			List<com.card.forexapp.entity.ForexCardDetails> forexCardDetails) {
+	
+	
+
+	public Admin(Integer adminId, String adminEmail, String password, Boolean isAdmin,
+			List<ForexCardDetails> forexCardDetails) {
 		super();
 		this.adminId = adminId;
 		this.adminEmail = adminEmail;
 		Password = password;
+		this.isAdmin = isAdmin;
 		this.forexCardDetails = forexCardDetails;
 	}
+
+
+
 	public Integer getAdminId() {
 		return adminId;
 	}
@@ -54,6 +61,20 @@ public class Admin {
 	}
 	public void setForexCardDetails(List<ForexCardDetails> forexCardDetails) {
 		this.forexCardDetails = forexCardDetails;
+	}
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", adminEmail=" + adminEmail + ", Password=" + Password + ", isAdmin="
+				+ isAdmin + ", forexCardDetails=" + forexCardDetails + "]";
 	}
 	
 	
