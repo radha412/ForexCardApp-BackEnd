@@ -49,7 +49,7 @@ public class AdminController {
 	
 	@PutMapping("/admin/forexcard/{forexcardid}")
 	public ResponseEntity<ForexCardDetails> updateForexCardType(@RequestBody ForexCardDetails forexCardDetail,
-			@PathVariable("forexcardid") Integer forexcardid) throws AdminException{
+			@PathVariable("forexcardid") Integer forexcardid) throws AdminException, ForexCardDetailsException{
 		ForexCardDetails forexCardDetailFinal =this.forexCardDetailsService.updateForexCardType(forexCardDetail,forexcardid);
 		return ResponseEntity.ok(forexCardDetailFinal);
 	}

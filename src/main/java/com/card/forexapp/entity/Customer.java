@@ -14,6 +14,9 @@ public class Customer {
 	
 	@Id
 	private Long customerId;
+	private String customerEmail;
+	private String password;
+	private String resetPasswordToken;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<LoadingTranscation> loadingTranscations=new ArrayList<>();
@@ -28,10 +31,14 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(Long customerId, List<LoadingTranscation> loadingTranscations,
-			List<PaymentTransaction> paymentTranscations, ForexCard forexCard) {
+	public Customer(Long customerId, String customerEmail, String password, String resetPasswordToken,
+			List<LoadingTranscation> loadingTranscations, List<PaymentTransaction> paymentTranscations,
+			ForexCard forexCard) {
 		super();
 		this.customerId = customerId;
+		this.customerEmail = customerEmail;
+		this.password = password;
+		this.resetPasswordToken = resetPasswordToken;
 		this.loadingTranscations = loadingTranscations;
 		this.paymentTranscations = paymentTranscations;
 		this.forexCard = forexCard;
@@ -68,6 +75,31 @@ public class Customer {
 	public void setForexCard(ForexCard forexCard) {
 		this.forexCard = forexCard;
 	}
+
+	public String getCustomerEmail() {
+		return customerEmail;
+	}
+
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+	
 	
 	
 
