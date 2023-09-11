@@ -6,10 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.card.forexapp.entity.Customer;
 import com.card.forexapp.entity.Email;
 import com.card.forexapp.entity.ForexCardDetails;
-import com.card.forexapp.exception.AdminException;
 import com.card.forexapp.exception.ForexCardDetailsException;
 import com.card.forexapp.repository.ForexCardDetailsRepository;
 
@@ -32,10 +30,7 @@ public class ForexCardDetailsService {
 	}
 
 	public ForexCardDetails createnewForexCardType(ForexCardDetails forexCardDetails) throws ForexCardDetailsException {
-		String forexCardName = forexCardDetails.getForexCardName();
-		System.out.println(forexCardName);
-		if(forexCardDetails.getForexCardName().isEmpty())
-			throw new ForexCardDetailsException("Give some name to ForexCardType . ");
+		System.out.println(forexCardDetails.getForexCardName());
 		return this.forexCardDetailRepo.save(forexCardDetails);
 	}
 
@@ -67,10 +62,11 @@ public class ForexCardDetailsService {
 		emailDetail.setMsgBody("Hello user , we are updateing your forex card into "+forexCardDetail.getForexCardName());
 		System.out.println(emailDetail.toString());
 		emailService.sendSimpleMail(emailDetail);
+		forexCardDetail.setForexCardNameId(forexcardid);
 		return this.forexCardDetailRepo.save(forexCardDetail);
 	}
 	
-	public ForexCardDetails getForexCardById(Integer forexCardTypeId) throws ForexCardDetailsException {
+	public ForexCardDetails getForexCardDetailById(Integer forexCardTypeId) throws ForexCardDetailsException {
 		Optional<ForexCardDetails> forexCardDetailOpt = this.forexCardDetailRepo.findById(forexCardTypeId);
 		if(!forexCardDetailOpt.isPresent())
 			throw new ForexCardDetailsException("Forex Card Type Not found!!");

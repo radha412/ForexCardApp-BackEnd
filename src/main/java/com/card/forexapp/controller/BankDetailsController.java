@@ -15,7 +15,7 @@ public class BankDetailsController {
 	@Autowired
 	BankDetailsService bankDetailsService;
 	
-	@GetMapping("/bankDetails")
+	@GetMapping("/bankdetails")
 	public List<BankDetails> getAllBankDetails(){
 		return this.bankDetailsService.getAllBankDetails();
 	}

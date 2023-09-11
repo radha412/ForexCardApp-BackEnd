@@ -12,7 +12,7 @@ import com.card.forexapp.entity.Email;
 @Service
 public class EmailService {
 
-	@Autowired(required=true)
+	@Autowired
 	private JavaMailSender javaMailSender;
 	   
     public String sendSimpleMail(Email emailDetails)

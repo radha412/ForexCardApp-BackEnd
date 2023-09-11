@@ -22,10 +22,14 @@ public class AdminService  {
 	}
 
 	public Admin createNewAdmin(Admin admin, Integer adminId) throws AdminException {
+		if(admin.getIsAdmin()==null)
+			admin.setIsAdmin(false);
+		else
+			admin.setIsAdmin(true);
 		Optional<Admin> adminOpt= this.adminRepository.findById(adminId);
 		Admin presentAdmin = adminOpt.get();
-		if(!presentAdmin.getIsAdmin())
-			throw new AdminException("Admin is not superAdmin . ");
+//		if(!presentAdmin.getIsAdmin())
+//			throw new AdminException("Admin is not superAdmin . ");
 		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 		String encrpytedPassword = bcrypt.encode(admin.getPassword());
 		admin.setPassword(encrpytedPassword);
@@ -56,6 +60,15 @@ public class AdminService  {
 		if(!bcrypt.matches(password, admin.getPassword())) 
 			return false;
 		return true;
+	}
+
+	public Admin createNewAdminwITHOUT(Admin admin) {
+		// TODO Auto-generated method stub
+		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+		String encrpytedPassword = bcrypt.encode(admin.getPassword());
+		admin.setPassword(encrpytedPassword);
+		return this.adminRepository.save(admin);
+		
 	}
 
 

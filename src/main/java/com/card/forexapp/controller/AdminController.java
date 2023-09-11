@@ -1,8 +1,11 @@
 package com.card.forexapp.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +21,8 @@ import com.card.forexapp.service.AdminService;
 import com.card.forexapp.service.CustomerService;
 import com.card.forexapp.service.ForexCardDetailsService;
 
-
-
-
-
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class AdminController {
 	
 	@Autowired
@@ -39,6 +39,13 @@ public class AdminController {
 		this.adminService.createNewAdmin(admin,adminId);
 		return ResponseEntity.ok(admin);
 	}
+	
+	@PostMapping("/admin")
+	public ResponseEntity<Admin> newAdmin(@RequestBody Admin admin ) throws AdminException {
+		this.adminService.createNewAdminwITHOUT(admin);
+		return ResponseEntity.ok(admin);
+	}
+	
 	
 	@PostMapping("/admin/forexcard")
 	public ResponseEntity<ForexCardDetails> createNewForexCardType(@RequestBody ForexCardDetails forexCardDetails)throws AdminException, ForexCardDetailsException{
@@ -67,6 +74,12 @@ public class AdminController {
 	public ResponseEntity<Integer> countCustomers(){
 		Integer count = this.customerService.countCustomers();
 		return ResponseEntity.ok(count);
+	}
+	
+	@GetMapping("/admin")
+	public ResponseEntity<List<Admin>> getAllForexCardDetails(){
+		List<Admin> admin = this.adminService.getAllAdmin();
+		return ResponseEntity.ok(admin);
 	}
 
 }
