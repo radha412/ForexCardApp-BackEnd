@@ -40,11 +40,11 @@ public class AdminController {
 		return ResponseEntity.ok(admin);
 	}
 	
-	@PostMapping("/admin")
-	public ResponseEntity<Admin> newAdmin(@RequestBody Admin admin ) throws AdminException {
-		this.adminService.createNewAdminwITHOUT(admin);
-		return ResponseEntity.ok(admin);
-	}
+//	@PostMapping("/admin")
+//	public ResponseEntity<Admin> newAdmin(@RequestBody Admin admin ) throws AdminException {
+//		this.adminService.createNewAdminwITHOUT(admin);
+//		return ResponseEntity.ok(admin);
+//	}
 	
 	
 	@PostMapping("/admin/forexcard")
@@ -62,12 +62,13 @@ public class AdminController {
 	}
 	
 	@GetMapping("/admin/{username}/{password}")
-	public ResponseEntity<String> verifyAdmin(@PathVariable("username") String username , 
+	public ResponseEntity<Admin> verifyAdmin(@PathVariable("username") String username , 
 							@PathVariable("password") String password) throws AdminException {
 		Boolean verifiedAdmin = this.adminService.verifyAdmin(username,password);
+		Admin admin = this.adminService.getAdminByUserName(username);
 		if(verifiedAdmin==false)
-			return ResponseEntity.ok("Admin is not verified !!!");
-		return ResponseEntity.ok("Admin is verified");		
+			return ResponseEntity.ok(admin);
+		return ResponseEntity.ok(admin);		
 	}
 	
 	@GetMapping("/admin/customers")

@@ -28,8 +28,8 @@ public class AdminService  {
 			admin.setIsAdmin(true);
 		Optional<Admin> adminOpt= this.adminRepository.findById(adminId);
 		Admin presentAdmin = adminOpt.get();
-//		if(!presentAdmin.getIsAdmin())
-//			throw new AdminException("Admin is not superAdmin . ");
+		if(!presentAdmin.getIsAdmin())
+			throw new AdminException("Admin is not superAdmin . ");
 		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 		String encrpytedPassword = bcrypt.encode(admin.getPassword());
 		admin.setPassword(encrpytedPassword);
@@ -55,9 +55,10 @@ public class AdminService  {
 	public Boolean verifyAdmin(String username, String password) throws AdminException{
 		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 		Admin admin = this.getAdminByUserName(username);
+		System.out.println(admin);
 		if(admin==null)
 			throw new AdminException("Admin not found");
-		if(!bcrypt.matches(password, admin.getPassword())) 
+		if(bcrypt.matches(password, admin.getPassword())) 
 			return false;
 		return true;
 	}

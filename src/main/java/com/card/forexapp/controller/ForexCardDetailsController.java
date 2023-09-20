@@ -38,7 +38,7 @@ public class ForexCardDetailsController {
 	public ResponseEntity<ForexCardDetails> updateForexCardDetails(@RequestBody ForexCardDetails forexCardDetails,
 			@PathVariable("forexcardid") Integer forexcardid) throws ForexCardDetailsException {
 		ForexCardDetails forexCardDetailFinal =this.forexCardDetailService.updateForexCardType(forexCardDetails,forexcardid);
-		return ResponseEntity.ok(forexCardDetails);
+		return ResponseEntity.ok(forexCardDetailFinal);
 	}
 	
 	@DeleteMapping("/forexcarddetail/{forexcardid}")

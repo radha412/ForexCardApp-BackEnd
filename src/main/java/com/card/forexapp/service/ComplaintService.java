@@ -29,10 +29,10 @@ public class ComplaintService {
 			complaint.setPriority(com.card.forexapp.entity.ComplaintPriority.HIGH);
 			this.ComplaintRepo.save(complaint);
 
-				 Twilio.init("ACb3ab53ced2b824c465466bf2e7147119", "41982645197c6278864003bb1ef16123");
+				 Twilio.init("AC42f4a4eec63e914759119a868d3dc8cb", "c80a5ff9ce15b11c2d61811f5bcca80f");
 				 Message message = Message.creator(
 				     new PhoneNumber(complaint.getPhoneNumber()),
-				     new PhoneNumber("+16562188320"),
+				     new PhoneNumber("+13343452224"),
 				    "Hi"+" "+userName+". Thanks for reaching out, we have recieved your complain. Our team will call you within 2-3 hr.")
 				 .create();
 		}
@@ -40,10 +40,10 @@ public class ComplaintService {
 		{
 			complaint.setPriority(com.card.forexapp.entity.ComplaintPriority.LOW);
 			this.ComplaintRepo.save(complaint);
-			Twilio.init("ACb3ab53ced2b824c465466bf2e7147119", "41982645197c6278864003bb1ef16123");
+			Twilio.init("AC42f4a4eec63e914759119a868d3dc8cb", "c80a5ff9ce15b11c2d61811f5bcca80f");
 			 Message message = Message.creator(
 			     new PhoneNumber(complaint.getPhoneNumber()),
-			     new PhoneNumber("+16562188320"),
+			     new PhoneNumber("+13343452224"),
 			     "Hi"+" "+userName+". Thanks for reaching out, we have recieved your enquiry. Our team will call you within 24 hrs.")
 			 .create();
 		}

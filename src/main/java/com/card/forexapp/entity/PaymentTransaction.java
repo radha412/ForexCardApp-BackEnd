@@ -1,89 +1,142 @@
-package com.card.forexapp.entity;
-
+package com.card.forexapp.entity; 
 
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+ 
 
 @Entity
 public class PaymentTransaction {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long transactionId;
-	
-	private Long merchantAccountNumber;
-	
+	private String merchant;
 	private LocalDateTime transactionDateTime;
-	
 	private Double amount;
-	
-	private Boolean paymentSatus;
-	
-	
+	private String currency;
+	private String paymentMethod;
+	private String paymentStatus;
+
+ 
 
 	public PaymentTransaction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PaymentTransaction(Long transactionId, Long merchantAccountNumber,
-			LocalDateTime transactionDateTime, Double amount, Boolean paymentSatus) {
+ 
+
+	public PaymentTransaction(Long transactionId, String merchant, LocalDateTime transactionDateTime, Double amount,
+			String paymentStatus, String currency, String paymentMethod) {
 		super();
 		this.transactionId = transactionId;
-		this.merchantAccountNumber = merchantAccountNumber;
+		this.merchant = merchant;
 		this.transactionDateTime = transactionDateTime;
 		this.amount = amount;
-		this.paymentSatus = paymentSatus;
+		this.paymentStatus = paymentStatus;
+		this.currency = currency;
+		this.paymentMethod = paymentMethod;
 	}
+
  
+
 	public Long getTransactionId() {
 		return transactionId;
 	}
+
+ 
 
 	public void setTransactionId(Long transactionId) {
 		this.transactionId = transactionId;
 	}
 
-	public Long getMerchantAccountNumber() {
-		return merchantAccountNumber;
+ 
+
+	public String getMerchant() {
+		return merchant;
 	}
 
-	public void setMerchantAccountNumber(Long merchantAccountNumber) {
-		this.merchantAccountNumber = merchantAccountNumber;
+ 
+
+	public void setMerchant(String merchant) {
+		this.merchant = merchant;
 	}
+
+ 
 
 	public LocalDateTime getTransactionDateTime() {
 		return transactionDateTime;
 	}
 
-	public void setTransactionDateTime(LocalDateTime transactionDateTime) {
-		this.transactionDateTime = transactionDateTime;
+ 
+
+	public LocalDateTime setTransactionDateTime(LocalDateTime transactionDateTime) {
+		return this.transactionDateTime = transactionDateTime;
 	}
+
+ 
 
 	public Double getAmount() {
 		return amount;
 	}
 
+ 
+
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
-	public Boolean getPaymentSatus() {
-		return paymentSatus;
+ 
+
+	public String getPaymentStatus() {
+		return paymentStatus;
 	}
 
-	public void setPaymentSatus(Boolean paymentSatus) {
-		this.paymentSatus = paymentSatus;
+ 
+
+	public String setPaymentStatus(String paymentStatus) {
+		return this.paymentStatus = paymentStatus;
 	}
 
+ 
+
+	public String getCurrency() {
+		return currency;
+	}
+
+ 
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+ 
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+ 
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+ 
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId  + ", merchantAccountNumber="
-				+ merchantAccountNumber + ", transactionDateTime=" + transactionDateTime + ", amount=" + amount
-				+ ", paymentSatus=" + paymentSatus +"]";
+		return "PaymentTransaction [transactionId=" + transactionId + ", merchant=" + merchant
+				+ ", transactionDateTime=" + transactionDateTime + ", amount=" + amount + ", paymentStatus="
+				+ paymentStatus + ", currency=" + currency + ", paymentMethod=" + paymentMethod + "]";
 	}
-	
+
+ 
+
 	
 }

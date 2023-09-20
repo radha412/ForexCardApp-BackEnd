@@ -92,6 +92,15 @@ public class ForexCardDetails {
 	public void setBaseIncome(Double baseIncome) {
 		this.baseIncome = baseIncome;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ForexCardDetails [forexCardNameId=" + forexCardNameId + ", forexCardName=" + forexCardName
+				+ ", forexCardConversionFee=" + forexCardConversionFee + ", maxSpendingLimit=" + maxSpendingLimit
+				+ ", platformfee=" + platformfee + ", subscriptionFees=" + subscriptionFees + ", baseIncome="
+				+ baseIncome + "]";
+	}
 	
 	
 	
